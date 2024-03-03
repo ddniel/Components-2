@@ -1,4 +1,8 @@
 export default function ProductCard(props) {
+  
+  function showPrice(){
+    console.log(props.price)
+  }
   return (
     <div style={{border:"solid 2px white", borderRadius:"15px", padding:"40px 0", margin:"40px"}}>
       <img src={props.imageUrl} alt="hp 15" />
@@ -8,9 +12,9 @@ export default function ProductCard(props) {
       <p>
         {props.description}
       </p>
-      <div className="price">{props.price}</div>
+      <div className="price" onMouseOver={showPrice}>{props.price}</div>
       {props.isInStock == false && <p style={{color: "red"}} >Unavailable</p>}
-      <button>Add to Cart</button>
+      <button onClick={() => props.onAddToCart(props.name)} >Add to Cart</button>
     </div>
   );
 }
